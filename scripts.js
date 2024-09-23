@@ -5,7 +5,8 @@ window.addEventListener("resize", updateLayout)
 
 function updateLayout() {
   const width = window.innerWidth
-  const shouldReload = width < 1000
+  const shouldReload =
+    (width > 650 && !reloaded) || (width <= 650 && reloaded)
 
   if (shouldReload) {
     original.classList.add("hide")
