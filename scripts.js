@@ -6,7 +6,7 @@ let reloaded = false
 function updateLayout() {
   const width = window.innerWidth
   const shouldReload =
-    (width > 1000 && !reloaded) || (width <= 1000 && reloaded)
+    (width > 650 && !reloaded) || (width <= 650 && reloaded)
 
     original.classList.add("hide")
     alternative.classList.remove("hide")
