@@ -1,0 +1,317 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  font-size: 62.5%;
+  --content-primary: hsl(0, 0%, 100%);
+  --content-secondary: hsl(216, 5%, 79%);
+  --content-tertiary: hsl(0, 0%, 85%);
+  --content-brand: hsl(277, 65%, 73%);
+
+  --background-primary: hsl(0, 0%, 1%);
+  --background-secondary: hsl(270, 6%, 7%);
+  --background-tertiary: hsl(250, 15%, 16%);
+
+  --gradient-border: linear-gradient(
+    90deg,
+    hsl(166, 37%, 61%) 0%,
+    hsl(70, 50%, 73%) 14.84%,
+    hsl(351, 59%, 79%) 32.15%,
+    hsl(293, 59%, 70%) 65.79%,
+    hsl(231, 91%, 77%) 84.58%
+  );
+  --gradient-content: linear-gradient(
+    to right,
+    hsl(216, 5%, 79%) 0%,
+    hsl(0, 0%, 24%) 100%
+  );
+  --gradient-background: linear-gradient(
+    to bottom,
+    hsl(0, 0%, 0%) 0%,
+    hsla(0, 0%, 0%, 0.6) 100%
+  );
+  --gradient-switch: linear-gradient(
+    90deg,
+    hsl(293, 59%, 70%) 0%,
+    hsl(231, 91%, 77%) 98.93%
+  );
+}
+
+body {
+  display: grid;
+  place-content: center;
+  min-height: 100vh;
+
+  font-size: 1.6rem;
+  line-height: 150%;
+  color: var(--content-primary);
+
+  background: var(--gradient-background), url(./assets/bg-image.png);
+  background-color: var(--background-primary);
+  padding: 0 3.5rem;
+}
+
+.logo {
+  margin: 4.4rem auto 4.6rem;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  width: 32rem;
+}
+
+header .overline {
+  font-family: "Roboto Mono", sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+
+  background: var(--gradient-content);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+header h1 {
+  font-family: "Sora", sans-serif;
+  font-size: 4rem;
+  line-height: 130%;
+  text-transform: uppercase;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+
+  margin-top: 4.2rem;
+}
+
+.instructions span {
+  font-family: "Roboto Flex", sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.instructions p {
+  font-family: "Roboto Flex", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--content-tertiary);
+}
+
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.draw {
+  display: flex;
+  gap: 1.2rem;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+
+  font-family: "Roboto Flex", sans-serif;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--content-secondary);
+}
+.card input {
+  width: 8.6rem;
+  height: 5.6rem;
+
+  border: none;
+  outline: none;
+  border-radius: 0.8rem;
+
+  background-color: var(--background-secondary);
+
+  font-family: "Sora", sans-serif;
+  font-size: 3.2rem;
+  font-weight: bold;
+  line-height: 150%;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--content-primary);
+
+  transition: background-color 0.8s ease;
+  background-clip: padding-box;
+
+  transition: background-color 0.8s ease;
+}
+.card input:hover,
+.card input:focus,
+.card input:checked {
+  background-color: var(--background-tertiary);
+  border: 2px solid transparent;
+}
+
+.repeat {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+
+  font-family: "Inter", sans-serif;
+  font-size: 1.2rem;
+}
+#repeat {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  pointer-events: none;
+}
+#repeat + label {
+  position: relative;
+
+  outline: none;
+  cursor: pointer;
+  width: 30px;
+  height: 20px;
+  padding: 2px;
+
+  background-color: var(--content-tertiary);
+  border-radius: 16px;
+}
+#repeat:focus + label {
+  outline: 2px solid var(--content-primary);
+}
+#repeat + label:before,
+#repeat + label:after {
+  content: "";
+
+  display: block;
+  position: absolute;
+
+  inset: 0;
+  width: 100%;
+}
+#repeat + label:before {
+  right: 1px;
+  background-color: var(--content-tertiary);
+  border-radius: 16px;
+  transition: background 0.4s;
+}
+#repeat + label:after {
+  width: 14px;
+  height: 14px;
+  top: 3px;
+  background-color: #fff;
+  border-radius: 100%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s;
+  left: 3px;
+}
+#repeat:checked + label:before {
+  background: var(--gradient-switch);
+}
+#repeat:checked + label:after {
+  transform: translateX(9px);
+}
+
+button {
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+
+  cursor: pointer;
+
+  background-color: var(--background-tertiary);
+  color: var(--content-primary);
+
+  min-width: 32rem;
+  height: 5.6rem;
+
+  border: none;
+  border-radius: 0.8rem;
+  outline: none;
+
+  font-family: "Roboto Flex", sans-serif;
+  font-weight: bold;
+  line-height: 150%;
+  text-transform: uppercase;
+}
+button::before,
+button::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: calc(100% + 0.2rem);
+  height: calc(100% + 0.2rem);
+  background: var(--gradient-border);
+  background-size: 300%;
+  border-radius: 0.8rem;
+  animation: BorderAnimation 8s ease infinite;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+button::after {
+  filter: blur(0.2rem);
+}
+button:hover::after,
+button:focus::after {
+  opacity: 1;
+}
+@keyframes BorderAnimation {
+  0% {
+    background-position: 0;
+  }
+  100% {
+    background-position: 300%;
+  }
+}
+
+.questions {
+  display: flex;
+  flex-direction: column;
+  gap: 3.6rem;
+  margin: 8rem 0 4.4rem;
+  color: var(--content-secondary);
+}
+.quest {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+}
+.quest div span {
+  font-family: "Roboto Flex", sans-serif;
+  font-size: 1.4rem;
+  color: var(--content-brand);
+}
+.quest div p {
+  font-family: "Roboto Flex", sans-serif;
+  font-size: 1.2rem;
+}
+
+.hide {
+  display: none;
+}
+
+@media (min-width: 1000px) {
+  header {
+    width: min(52rem);
+  }
+  header h1 {
+    font-size: 7.2rem;
+  }
+  main {
+    display: flex;
+    gap: 10.8rem;
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+  }
+  .sla {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}
