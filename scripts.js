@@ -1,22 +1,20 @@
 const original = document.querySelector(".original")
 const alternative = document.querySelector(".alternative")
 
-let reloaded = false
+window.addEventListener("resize", updateLayout)
 
 function updateLayout() {
   const width = window.innerWidth
-  const shouldReload =
-    (width > 500 && !reloaded) || (width <= 500 && reloaded)
+  const shouldReload = width < 1000
 
+  if (shouldReload) {
     original.classList.add("hide")
     alternative.classList.remove("hide")
-  if (shouldReload) {
-    reloaded = !reloaded
-    window.location.reload()
+  } else {
+    original.classList.remove("hide")
+    alternative.classList.add("hide")
   }
 }
-
-window.addEventListener("resize", updateLayout)
-
+updateLayout()
 
 

@@ -295,7 +295,7 @@ button:focus::after {
   display: none;
 }
 
-@media (min-width: 500px) {
+@media (min-width: 1000px) {
   header {
     width: min(52rem);
   }
